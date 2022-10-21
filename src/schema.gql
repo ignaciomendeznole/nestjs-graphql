@@ -1,0 +1,113 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Item {
+  """Item ID"""
+  id: ID!
+
+  """Item name"""
+  name: String!
+
+  """Item quantity"""
+  quantity: Int!
+
+  """Item description"""
+  description: String!
+
+  """Item quantity units"""
+  quantityUnits: String
+
+  """Item active"""
+  active: Boolean!
+}
+
+type User {
+  """User Unique ID"""
+  id: ID!
+
+  """User full name"""
+  fullName: String!
+
+  """User email"""
+  email: String!
+
+  """User password"""
+  password: String!
+
+  """User roles"""
+  roles: [String!]!
+
+  """User active or inactive"""
+  isActive: Boolean!
+}
+
+type AuthResponse {
+  user: User!
+  token: String!
+}
+
+type Query {
+  items: [Item!]!
+  item(id: String!): Item!
+  revalidate: AuthResponse!
+}
+
+type Mutation {
+  createItem(createItemInput: CreateItemInput!): Item!
+  updateItem(updateItemInput: UpdateItemInput!): Item!
+  removeItem(id: String!): Item!
+  signUp(signUpInput: SignUpInput!): AuthResponse!
+  signIn(signInInput: SignInInput!): AuthResponse!
+}
+
+input CreateItemInput {
+  """Item name"""
+  name: String!
+
+  """Item quantity"""
+  quantity: Int!
+
+  """Item description"""
+  description: String!
+
+  """Item quantity units"""
+  quantityUnits: String
+}
+
+input UpdateItemInput {
+  """Item name"""
+  name: String
+
+  """Item quantity"""
+  quantity: Int
+
+  """Item description"""
+  description: String
+
+  """Item quantity units"""
+  quantityUnits: String
+  id: ID!
+}
+
+input SignUpInput {
+  """User full name"""
+  fullName: String!
+
+  """User email"""
+  email: String!
+
+  """User password"""
+  password: String!
+
+  """User roles"""
+  role: [String!]
+}
+
+input SignInInput {
+  """Email"""
+  email: String!
+
+  """Password"""
+  password: String!
+}
